@@ -20,10 +20,23 @@ $(".btn").on("click", (event) => {
     userClickedPattern.push(userChosenColor);
     playSound(userChosenColor);
     animatePress(userChosenColor);
+    checkAnswer(userClickedPattern.length - 1);
 });
 
 
+function checkAnswer(lastColor) {
+    if (userClickedPattern[lastColor] === gamePattern[lastColor]) {
+        if (userClickedPattern.length === gamePattern.length) {
+            setTimeout(() => {
+                nextSequence();
+            }, 1000);
+        }
+    }
+}
+
+
 function nextSequence() {
+    userClickedPattern = [];
     level++;
     $("#level-title").text("Level " + level);
     let randomNumber = Math.floor(Math.random() * 4);

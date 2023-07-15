@@ -4,9 +4,8 @@ let userClickedPattern = [];
 let started = false;
 let level = 0;
 
-
+// Event listener for keypress to start the game
 $(document).on("keypress", () => {
-    // !started evaluates to true if started is falsy
     if (!started) {
         $("#level-title").text("Level " + level);
         nextSequence();
@@ -14,7 +13,7 @@ $(document).on("keypress", () => {
     }
 });
 
-
+// Event listener for button clicks
 $(".btn").on("click", (event) => {
     let userChosenColor = event.target.id;
     userClickedPattern.push(userChosenColor);
@@ -23,7 +22,7 @@ $(".btn").on("click", (event) => {
     checkAnswer(userClickedPattern.length - 1);
 });
 
-
+// Check user's answer
 function checkAnswer(lastColor) {
     if (userClickedPattern[lastColor] === gamePattern[lastColor]) {
         if (userClickedPattern.length === gamePattern.length) {
@@ -42,7 +41,7 @@ function checkAnswer(lastColor) {
     }
 }
 
-
+// Generate next sequence
 function nextSequence() {
     userClickedPattern = [];
     level++;
@@ -55,13 +54,11 @@ function nextSequence() {
     playSound(randomChosenColor);
 }
 
-
-// play the corresponding sound when trigger
+// play corresponding sound for a specific color
 function playSound(name) {
     let audio = new Audio("sounds/" + name + ".mp3");
     audio.play();
 }
-
 
 // Add animations to user clicks
 function animatePress(currentColor) {
@@ -70,7 +67,6 @@ function animatePress(currentColor) {
         $("#" + currentColor).removeClass("pressed");
     }, 100);
 }
-
 
 // Restart the game
 function startOver() {

@@ -38,6 +38,7 @@ function checkAnswer(lastColor) {
             $("body").removeClass("game-over");
         }, 200);
         $("#level-title").text("Game Over, Press Any Key to Restart");
+        startOver();
     }
 }
 
@@ -68,4 +69,12 @@ function animatePress(currentColor) {
     setTimeout(() => {
         $("#" + currentColor).removeClass("pressed");
     }, 100);
+}
+
+
+// Restart the game
+function startOver() {
+    level = 0;
+    gamePattern = [];
+    started = false;
 }

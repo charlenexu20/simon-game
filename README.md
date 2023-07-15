@@ -1,6 +1,9 @@
 # Simon Game
 The Simon Game is a classic memory game where players need to remember and reproduce a sequence of colors and sounds. This project is an interactive web-based implementation of the Simon Game.
 
+# Demo
+[Simon Game](https://charlenexu20.github.io/simon-game/)
+
 ## Features
 
 - Randomly generated sequence of colors and sounds.

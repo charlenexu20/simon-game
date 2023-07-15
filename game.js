@@ -31,6 +31,13 @@ function checkAnswer(lastColor) {
                 nextSequence();
             }, 1000);
         }
+    } else {
+        playSound("wrong")
+        $("body").addClass("game-over");
+        setTimeout(() => {
+            $("body").removeClass("game-over");
+        }, 200);
+        $("#level-title").text("Game Over, Press Any Key to Restart");
     }
 }
 

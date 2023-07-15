@@ -1,7 +1,12 @@
-// game pattern
-
 let buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
+let userClickedPattern = [];
+
+$(".btn").on("click", (event) => {
+    let userChosenColor = event.target.id;
+    userClickedPattern.push(userChosenColor);
+});
+
 
 
 function nextSequence() {

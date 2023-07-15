@@ -5,6 +5,8 @@ let userClickedPattern = [];
 $(".btn").on("click", (event) => {
     let userChosenColor = event.target.id;
     userClickedPattern.push(userChosenColor);
+    playSound(userChosenColor);
+    animatePress(userChosenColor);
 });
 
 
@@ -21,7 +23,17 @@ function nextSequence() {
 nextSequence();
 
 
+// play the corresponding sound when trigger
 function playSound(name) {
     let audio = new Audio("sounds/" + name + ".mp3");
     audio.play();
+}
+
+
+// Add animations to user clicks
+function animatePress(currentColor) {
+    $("#" + currentColor).addClass("pressed");
+    setTimeout(() => {
+        $("#" + currentColor).removeClass("pressed");
+    }, 100);
 }

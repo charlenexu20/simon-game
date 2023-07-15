@@ -1,6 +1,19 @@
 let buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let userClickedPattern = [];
+let started = false;
+let level = 0;
+
+
+$(document).on("keypress", () => {
+    // !started evaluates to true if started is falsy
+    if (!started) {
+        $("#level-title").text("Level " + level);
+        nextSequence();
+        started = true;
+    }
+});
+
 
 $(".btn").on("click", (event) => {
     let userChosenColor = event.target.id;
@@ -10,8 +23,9 @@ $(".btn").on("click", (event) => {
 });
 
 
-
 function nextSequence() {
+    level++;
+    $("#level-title").text("Level " + level);
     let randomNumber = Math.floor(Math.random() * 4);
     let randomChosenColor = buttonColors[randomNumber];
     gamePattern.push(randomChosenColor);
@@ -19,8 +33,6 @@ function nextSequence() {
     $(`#${randomChosenColor}`).fadeIn(100).fadeOut(100).fadeIn(100);
     playSound(randomChosenColor);
 }
-
-nextSequence();
 
 
 // play the corresponding sound when trigger
